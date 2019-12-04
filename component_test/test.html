@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="components-demo">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+
+    <hr>
+    <blog-post
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+    />
+  </div>
+  
+  <script src="./js/vue.js"></script>
+  <script>
+    // 定义一个新的组件，名称为 button-counter
+    Vue.component('button-counter', {
+      data () { // 组件的data配置必须是返回对象的函数
+        return {
+          count: 0
+        }
+      },
+      template: '<button @click="count++">你点击了 {{ count }} 次。</button>'
+    })
+
+    Vue.component('blog-post', {
+      props: ['title'], // 声明接收属性
+      template: '<h3>{{ title }} <button-counter/> </h3>'
+    })
+
+    new Vue({ 
+      el: '#components-demo',
+      data: {
+        posts: [
+          { id: 1, title: '我的 Vue 旅程222' },
+          { id: 2, title: '用 Vue 写博客222' },
+          { id: 3, title: 'Vue 如此有趣222' }
+        ]
+      }
+     })
+  </script>
+</body>
+</html>

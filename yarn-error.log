@@ -1,0 +1,36 @@
+Arguments: 
+  D:\work\node\node-v8.12.0-win-x64\node.exe D:\work\node\node-v8.12.0-win-x64\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;E:\cordova-package\jdk1.8-64\bin;%ANDROID-HOME%\platform-tools;%ANDROID-HOME%\tools;C:\Program Files\TortoiseSVN\bin;C:\Program Files\TortoiseGit\bin;C:\WINDOWS\System32\OpenSSH\;D:\work\node\node-v8.12.0-win-x64;C:\ProgramData\chocolatey\bin;C:\Program Files\VisualSVN Server\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Fei\AppData\Local\Microsoft\WindowsApps;%GRADLE_HOME%\bin;C:\Users\Fei\AppData\Local\Programs\Python\Python35\Scripts;C:\Users\Fei\AppData\Local\Programs\Python\Python35;D:\work\server\apache-tomcat-6.0.16\bin;C:\Program Files\Java\jdk1.8.0_11\bin;C:\Users\Fei\AppData\Local\Android\Sdk\tools;C:\Users\Fei\AppData\Local\Android\Sdk\platform-tools;C:\Users\Fei\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell;C:\Users\Fei\AppData\Roaming\npm;C:\Program Files\Git\cmd;C:\Users\Fei\AppData\Local\Programs\Microsoft VS Code\bin;D:\Program Files\MongoDB\Server\3.2\bin;D:\Program Files\cmder_mini;C:\Users\Fei\AppData\Local\Yarn\bin;
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  8.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (D:\work\node\node-v8.12.0-win-x64\node_modules\yarn\lib\cli.js:136724:13)
+      at emitNone (events.js:106:13)
+      at Interface.emit (events.js:208:7)
+      at Interface._ttyWrite (readline.js:774:16)
+      at ReadStream.onkeypress (readline.js:158:10)
+      at emitTwo (events.js:126:13)
+      at ReadStream.emit (events.js:214:7)
+      at emitKeys (internal/readline.js:420:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1010:36)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
