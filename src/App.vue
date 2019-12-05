@@ -1,20 +1,27 @@
 <template>
   <div>
     <h2>{{title}}</h2>
+
+    <Blogs/>
   </div>
 </template>
 
 
 <script>
-export default { // 配置对象
-  data() {
-    return {
-      title: 'App组件2222'
+  import Blogs from './components/Blogs'
+  export default { // 配置对象
+    data() {
+      return {
+        title: 'App组件2222'
+      }
+    },
+
+    components: {
+      Blogs
     }
-  },
-}
+  }
 </script>
 
-<style>
+<style scoped>
   
 </style>
