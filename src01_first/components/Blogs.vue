@@ -9,6 +9,7 @@
 
 <script type="text/ecmascript-6">
   import Blog from './Blog'
+  import moduleName from '@/App.vue'
   export default {
 
     data() {

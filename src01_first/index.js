@@ -3,8 +3,6 @@
 import Vue from 'vue'
 import App from './App' // 引入自定义组件
 
-// import './base.css'
-
 // 注册全局组件
 // Vue.component('App', App) 
 
