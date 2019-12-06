@@ -8,6 +8,8 @@ import App from './App' // 引入自定义组件
 // 注册全局组件
 // Vue.component('App', App) 
 
+Vue.config.productionTip = false // 不显示不是生产环境的提示
+
 new Vue({
   // el: '#root'
   // 注册局部组件

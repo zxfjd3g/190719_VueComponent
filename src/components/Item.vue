@@ -1,7 +1,7 @@
 <template>
   <li :style="{background: bgColor}" @mouseenter="handleEnter(true)" @mouseleave="handleEnter(false)">
     <label>
-      <input type="checkbox" v-model="todo.completed"/>
+      <input type="checkbox" v-model="isComplete"/>
       <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" v-show="isShow" @click="deleteItem">删除</button>
@@ -17,13 +17,25 @@
     props: { // 声明属性的属性名和属性值的类型
       todo: Object,
       deleteTodo: Function,
-      index: Number
+      index: Number,
+      updateTodo: Function
     },
 
     data () {
       return {
         bgColor: 'white',
         isShow: false
+      }
+    },
+
+    computed: {
+      isComplete: {
+        get () {
+          return this.todo.completed
+        },
+        set (value) {
+          this.updateTodo(this.todo, value)
+        }
       }
     },
 

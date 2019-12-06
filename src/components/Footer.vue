@@ -25,7 +25,7 @@
 
       isCheckAll: {
         get () {
-          return this.todos.length === this.completeSize  // 读属性值就会自动调用对应的getter方法
+          return this.todos.length === this.completeSize && this.completeSize>0 // 读属性值就会自动调用对应的getter方法
         },
         set (value) { // value代表当前勾选状态的boolean值
           this.checkAll(value)
