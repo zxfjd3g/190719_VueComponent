@@ -1,9 +1,8 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <!--<Header @addTodo="addTodo"/> --><!-- 给当前Header对象绑定自定义事件监听 -->
-      <Header ref="header"/>
-      <List :todos="todos" :updateTodo="updateTodo"/>
+      <Header :addTodo="addTodo"/>
+      <List :todos="todos" :deleteTodo="deleteTodo" :updateTodo="updateTodo"/>
       <Footer 
         :todos="todos" 
         :clearCompletedTodos="clearCompletedTodos" 
@@ -28,13 +27,6 @@
     },
 
     mounted () {
-
-      // 给<Header/>绑定事件监听
-      this.$refs.header.$on('addTodo', this.addTodo)
-
-      // 通过xxx来绑定事件监听
-      this.$globalEventBus.$on('deleteTodo', this.deleteTodo)
-
       // 模拟异步读取数据
       setTimeout(() => {
         // 读取local中保存的todos, 更新数据
@@ -48,7 +40,6 @@
       },
 
       deleteTodo (index) {
-        console.log('deleteTodo()', index)
         this.todos.splice(index, 1)
       },
 

@@ -7,6 +7,13 @@
 
 <script type="text/ecmascript-6">
   export default {
+    // 声明接收属性: 更新数据的函数属性
+    props: { // 属性名, 属性值的类型, 属性的必要性
+      addTodo: {
+        type: Function,
+        required: true
+      }
+    },
 
     data () {
       return {
@@ -16,7 +23,6 @@
 
     methods: {
       add () {
-        console.log(this)
 
         // 根据输入的title封装一个todo对象
         const title = this.title.trim()
@@ -29,9 +35,7 @@
         }
 
         // 调用更新的函数, 向todos中添加一个todo
-        // this.addTodo(todo)
-        // 分发自定义事件: addTodo
-        this.$emit('addTodo', todo)
+        this.addTodo(todo)
 
         // 清除输入
         this.title = ''
