@@ -2,8 +2,8 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header :addTodo="addTodo"/>
-      <List :todos="todos"/>
-      <Footer/>
+      <List :todos="todos" :deleteTodo="deleteTodo"/>
+      <Footer :todos="todos" :clearCompletedTodos="clearCompletedTodos" :checkAll="checkAll"/>
     </div>
   </div>
 </template>
@@ -28,6 +28,18 @@
     methods: {
       addTodo (todo) {
         this.todos.unshift(todo)
+      },
+
+      deleteTodo (index) {
+        this.todos.splice(index, 1)
+      },
+
+      clearCompletedTodos () {
+        this.todos = this.todos.filter((todo, index) => !todo.completed)
+      },
+
+      checkAll (isCheckAll) {
+        this.todos.forEach(todo => todo.completed = isCheckAll)
       }
     },
 
