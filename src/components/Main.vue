@@ -29,31 +29,37 @@
 
     mounted () {
       // 绑定一个自事件监听(search)
-      this.$eventBus.$on('search', (searchName) => {
+      this.$eventBus.$on('search', async (searchName) => {
 
         // 更新状态数据(请求中)
         this.firstView = false
         this.loading = true
 
         // 发异步ajax请求获取用户列表数据
-        axios('https://api.github.com/search/users', {params: {q: searchName}})
-          .then(
-            response => { // 如果成功, 更新状态数据(成功)
-              const result = response.data
-              const users = result.items.map(item => ({
-                username: item.login,
-                url: item.html_url,
-                avatar_url: item.avatar_url 
-              }))
-              this.loading = false
-              this.users = users
-            },
-            error => { // 如果失败, 更新状态数据(失败)
-              this.loading = false
-              this.errorMsg = error.message
-            }
-          )
+        /* 
+        请求当前项目的地址
+        */
+        // axios('/api/search/users', {params: {q: searchName}})
+        try {
+          const response = await axios('/gh/search/users', {params: {q: searchName}})
+          // 如果成功, 更新状态数据(成功)
+          const result = response.data
+          const users = result.items.map(item => ({
+            username: item.login,
+            url: item.html_url,
+            avatar_url: item.avatar_url 
+          }))
+          this.loading = false
+          this.users = users
+        } catch (error) { // 如果失败, 更新状态数据(失败)
+          this.loading = false
+          this.errorMsg = error.message
+        }
       })
+    },
+
+    beforeDestroy () {
+      this.$eventBus.$off('search')
     }
   }
 </script>

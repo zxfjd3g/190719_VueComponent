@@ -159,13 +159,5 @@
     3). 编码: 
         src/App.vue
         src/index.js
-        
-## 6. 配置async/await环境
-    下载依赖包:
-        yarn add -D @babel/runtime-corejs2
-    添加配置
-        presets: [
-          ['@babel/preset-env', {
-            'corejs': 2
-          }]
-        ]
+
+## 6. 解决开发环境ajax请求跨域问题

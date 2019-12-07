@@ -5,11 +5,13 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development",
+    "server": "node server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
+    "@babel/runtime-corejs2": "^7.7.5",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.1",
     "file-loader": "4.3.0",
