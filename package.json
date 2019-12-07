@@ -23,6 +23,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "pubsub-js": "^1.7.0",
     "vue": "^2.6.10"
   }
 }

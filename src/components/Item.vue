@@ -13,11 +13,11 @@
 3. 在监听回调中, 更新数据
  */
 <script type="text/ecmascript-6">
+  import PubSub from 'pubsub-js'
   export default {
     props: { // 声明属性的属性名和属性值的类型
       todo: Object,
       index: Number,
-      updateTodo: Function
     },
 
     data () {
@@ -33,7 +33,8 @@
           return this.todo.completed
         },
         set (value) {
-          this.updateTodo(this.todo, value)
+          // this.updateTodo(this.todo, value)
+          PubSub.publish('updateTodo', {todo: this.todo, isCheck: value})
         }
       }
     },
@@ -54,6 +55,7 @@
           // this.deleteTodo(this.index)
           // 通过xxx对象分发事件
           this.$globalEventBus.$emit('deleteTodo', this.index)
+          console.log('emit()之后')
         }
       }
     }
