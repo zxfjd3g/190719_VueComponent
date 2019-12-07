@@ -31,6 +31,15 @@ module.exports = { // 配置对象
                 'corejs': 2 // 处理一些新语法的实现
               }]
             ], // 预设包: 包含多个常用插件包的一个大包
+
+            plugins: [
+              
+              ['babel-plugin-component', {
+                "libraryName": "mint-ui", // 针对mint-ui库实现按需引入打包
+                "style": true // 自动打包对应的css
+              }]
+            ]
+            // Error: .plugins[0][1] must be an object, false, or undefined
           }
         }
       },
