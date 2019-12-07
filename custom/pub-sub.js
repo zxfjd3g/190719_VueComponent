@@ -16,7 +16,7 @@
       }
     }
   */
-  const callbackContainer = {}
+  let callbackContainer = {}
   let id = 0
 
   // 1. token subscribe(msgName, callback): 订阅消息, 并返回一个标识token
@@ -29,7 +29,7 @@
     }
 
     // 将callback添加到小容器
-    const token = 'uid_' + ++id
+    const token = `uid_${msg}_${++id}`
     callbacks[token] = callback
 
     // 返回token
@@ -63,9 +63,26 @@
     }
   }
 
-  // 4. unsubscribe(flag): 根据flag取消订阅
+  /* 
+  4. unsubscribe(flag): 根据flag取消订阅
+    1. flag没有指定: 取消所有
+    2. flag是一个token值: 取消对应的一个回调
+    3. flag是msgName: 取消对应的所有
+  */
   PubSub.unsubscribe = function (flag) {
-    
+    if (flag===undefined) {
+      callbackContainer = {}
+    } else if (typeof flag==='string' && flag.indexOf('uid_')===0) {
+      
+      Object.values(callbackContainer).forEach(callbacks => {
+        delete callbacks[flag]
+      })
+
+      // const msg = flag.split('_')[1]
+      // callbackContainer[msg] && delete callbackContainer[msg][flag]
+    } else {
+      delete callbackContainer[flag]
+    }
   }
 
   // 向外暴露PubSub
