@@ -79,7 +79,7 @@ module.exports = { // 配置对象
   ],
   // 开发服务器的配置
   devServer: {
-    port: 8080,
+    port: 8081,
     open: true, // 自动打开浏览器
     // quiet: true, // 不做太多日志输出
     proxy: {

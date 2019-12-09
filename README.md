@@ -138,7 +138,7 @@
 ## 4. 自定义消息订阅与发布
     1). 相关语法
         a. PubSub: 包含所有功能的订阅/发布消息的管理者对象
-        b. PubSub.subscribe(msg, subscriber): 订阅消息: 指定消息名和订阅者回调函数
+        b. token PubSub.subscribe(msg, subscriber): 订阅消息: 指定消息名和订阅者回调函数
         c. PubSub.publish(msg, data): 异步发布消息: 指定消息名和数据
         d. PubSub.publishSync(msg, data): 同步发布消息: 指定消息名和数据
         e. PubSub.unsubscribe(flag): 取消订阅: 根据标识取消某个或某些消息的订阅
