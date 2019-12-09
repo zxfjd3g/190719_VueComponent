@@ -3,7 +3,7 @@
     <h2>Home</h2>
     <ul class="nav nav-tabs">
       <li>
-        <router-link to="/home/news">News</router-link>
+        <router-link :to="{name: 'news'}">News</router-link>
       </li>
       <li>
         <router-link to="/home/message">Mesage</router-link>

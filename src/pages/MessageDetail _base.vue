@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li>ID: {{id}}</li>
+    <li>ID: {{$route.params.id}}</li>
     <li>Title: {{detail.title}}</li>
     <li>Content: {{detail.content}}</li>
   </ul>
@@ -14,7 +14,6 @@
     {id: 4, title: 'message004', content: 'message content004'},
   ]
   export default {
-    props: ['id', 'name'],
     data () {
       return {
         detail: {}
@@ -31,7 +30,7 @@
       console.log('Detail mounted()')
       setTimeout(() => {
         // 得到当前id
-        const id = this.id * 1
+        const id = this.$route.params.id * 1
         const detail = allMessageDetils.find(detail => detail.id===id)
         this.detail = detail
       }, 1000);
@@ -42,7 +41,7 @@
         // 对路由变化作出响应...
         setTimeout(() => {
           // 得到当前新的id
-          const id = this.id * 1
+          const id = to.params.id * 1
           const detail = allMessageDetils.find(detail => detail.id===id)
           this.detail = detail
         }, 1000);

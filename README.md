@@ -180,3 +180,18 @@
     mint-ui的使用
         根据官方文档使用
         配置实现按需引入打包
+
+## 路由的2种模式比较, 解决history模式404问题
+    hash模式:
+        路径中带#: http://localhost:8080/#/home/news
+        发请求的路径: http://localhost:8080  项目根路径
+        响应: 返回的总是index页面  ==> path部分(/home/news)被解析为前台路由路径
+
+    history模式:
+        路径中不带#: http://localhost:8080/home/news
+        发请求的路径: http://localhost:8080/home/news
+        响应: 404错误
+        希望: 如果没有对应的资源, 返回index页面, path部分(/home/news)被解析为前台路由路径
+        解决: 添加配置
+            devServer: historyApiFallback: true, // 任意的 404 响应都被替代为 index.html
+            output: publicPath: '/', // 引入打包的文件时路径以/开头

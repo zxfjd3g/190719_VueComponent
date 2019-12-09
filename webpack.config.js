@@ -11,7 +11,8 @@ module.exports = { // 配置对象
   // 出口
   output: {
     filename: 'static/js/[name].bundle.js', // 可以带路径
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/', // 引入打包文件的路径左侧以 / 开头
   },
 
   // 模块加载器
@@ -99,7 +100,9 @@ module.exports = { // 配置对象
         },
         changeOrigin: true, // 支持跨域, 如果协议/主机也不相同, 必须加上
       }
-    }
+    },
+
+    historyApiFallback: true, // 任意的 404 响应都被替代为 index.html
   },
 
   // 开启source-map调试
