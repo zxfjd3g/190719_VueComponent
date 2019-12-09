@@ -134,3 +134,49 @@
         多组件共享状态(数据的管理)
         组件间的关系也没有限制
         功能比事件总线强大, 更适用于vue项目
+
+## 4. 自定义消息订阅与发布
+    1). 相关语法
+        a. PubSub: 包含所有功能的订阅/发布消息的管理者对象
+        b. PubSub.subscribe(msg, subscriber): 订阅消息: 指定消息名和订阅者回调函数
+        c. PubSub.publish(msg, data): 异步发布消息: 指定消息名和数据
+        d. PubSub.publishSync(msg, data): 同步发布消息: 指定消息名和数据
+        e. PubSub.unsubscribe(flag): 取消订阅: 根据标识取消某个或某些消息的订阅
+    2). 内部容器结构
+        {
+            "add": {
+                uid_1: callback1,
+                uid_2: callback2
+            },
+            "delete": {
+                uid_3: callback3
+            }
+        }
+
+## 5. 自定义事件总线
+    1). 相关语法
+        a. EventBus: 包含所有功能的全局事件总线对象
+        b. EventBus.on(eventName, listener): 绑定事件监听
+        c. EventBus.emit(eventName, data): 分发事件
+        d. EventBus.off(eventName): 解绑事件监听
+    2). 内部容器结构
+        {
+            "add": [callback1, callback2],
+            "delete": [callback3]
+        }
+
+## 6. 与后台进行通信
+    1). 使用什么发ajax请求?
+        vue-resource   vue1.x使用
+        axios vue2.x使用
+    2). 在什么时候发请求?
+        mounted()中
+        事件监听回调函数或相关函数中
+
+## 7. vue UI组件库
+    常用的UI组件库
+        PC: Element / iview /
+        Mobile: mint-ui / vant-ui / cube-ui
+    mint-ui的使用
+        根据官方文档使用
+        配置实现按需引入打包

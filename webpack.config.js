@@ -34,7 +34,7 @@ module.exports = { // 配置对象
 
             plugins: [
               
-              ['babel-plugin-component', {
+              ['component', {
                 "libraryName": "mint-ui", // 针对mint-ui库实现按需引入打包
                 "style": true // 自动打包对应的css
               }]
