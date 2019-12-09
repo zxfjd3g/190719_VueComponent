@@ -8,6 +8,7 @@ module.exports = { // 配置对象
   entry: {
     xxx: path.resolve(__dirname, 'src/index.js')
   },
+  
   // 出口
   output: {
     filename: 'static/js/[name].bundle.js', // 可以带路径
@@ -104,6 +105,16 @@ module.exports = { // 配置对象
 
     historyApiFallback: true, // 任意的 404 响应都被替代为 index.html
   },
+
+  /* 
+  1. 请求的路径有对应资源
+    http://localhost:8081/   ===> index.html
+    http://localhost:8081/static/css/base.css ===> base.css
+  2. 请求的路径与代理服务器监视的路径匹配
+    由代理服务器转发请求, 得到资源后返回
+  3. 其它所有的请求(404)
+    返回index页面, 请求的path部分会被当做前台路由路径处理, 从而对应的路由组件界面
+  */
 
   // 开启source-map调试
   devtool: 'cheap-module-eval-source-map',

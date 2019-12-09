@@ -18,6 +18,7 @@
 <script type="text/ecmascript-6">
   import axios from 'axios'
   export default {
+    name: 'Main', // 组件的标识名称 
     data () {
       return {
         firstView: true, // 是否显示第一个界面

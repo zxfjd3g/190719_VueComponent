@@ -1,35 +1,49 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-xs-offset-2 col-xs-8">
-        <div class="page-header">
-          <h2>Router Basic - 01</h2>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-xs-offset-2">
-        <div class="list-group">
-          <!-- 路由链接 -->
-          <router-link class="list-group-item" to="/about">About</router-link>
-          <router-link class="list-group-item" to="/home">Home</router-link>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <!-- 在些显示当前路由组件 -->
-            <!-- 当前: 与请求的路径匹配的路由 -->
-            <router-view></router-view>
-          </div>
-        </div>
-      </div>
-    </div>
+    App
+   <p>click {{$store.state.count}} times, count is {{$store.getters.evenOrOdd}}</p>
+   <button @click="increment">+</button>
+   <button @click="decrement">-</button>
+   <button @click="incrementIfOdd">increment if odd</button>
+   <button @click="incrementAsync">increment async</button>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default {}
+
+  /* 
+  store对象
+    1. state: 包含所有state数据的对象
+    2. getters: 包含所有getter计算属性的对象
+    3. dispatch(actionName, data)
+    4. commit(mutationName, data)
+
+  */
+  export default {
+    
+    mounted () {
+      console.log(this.$store)
+    },
+    
+
+    methods: {
+      increment () {
+        this.$store.commit('INCREMENT')
+      },
+
+      decrement () {
+        this.$store.commit('DECREMENT')
+      },
+
+      incrementIfOdd () {
+        this.$store.dispatch('incrementIfOdd')
+      },
+
+      incrementAsync () {
+        this.$store.dispatch('incrementAsync')
+      },
+    }
+  }
 </script>
 
 <style scoped>
