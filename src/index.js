@@ -7,5 +7,5 @@ new Vue({
     App: App
   },
   template: '<App/>',
-  store, // 所有的组件对象都能一个指定store属性: $store
+  store, // 所有的组件对象都有一个指定store属性: $store
 }).$mount('#root')
