@@ -1,11 +1,15 @@
 import Vue from 'vue'
-import App from './App'
-import store from './vuex/store'
+import App from './App' // 引入自定义组件
+import store from './store'
+
 
 new Vue({
-  components: { 
+
+  // 注册局部组件
+  components: { // 注册组件(后面才能写组件标签)
     App: App
   },
   template: '<App/>',
-  store, // 所有的组件对象都有一个指定store属性: $store
+
+  store, // 所有组件都能通过$store看到store对象
 }).$mount('#root')
