@@ -15,5 +15,27 @@
   3). 在get/set方法中去操作data中对应的属性
 -->
 
+<div id="test"></div>
+
+<script src="./js/mvvm/compile.js"></script>
+<script src="./js/mvvm/mvvm.js"></script>
+<script src="./js/mvvm/observer.js"></script>
+<script src="./js/mvvm/watcher.js"></script>
+<script>
+  debugger
+  const vm = new MVVM({
+    data: {
+      name: 'tom2'
+    }
+  })
+  console.log(vm)
+
+  console.log(vm.name, vm._data.name) // tom2  代理读
+
+  vm.name = 'jack2' // 代理写
+  console.log(vm.name, vm._data.name) // jack2
+
+</script>
+
 </body>
 </html>
