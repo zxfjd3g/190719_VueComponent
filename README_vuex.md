@@ -22,7 +22,7 @@
 ## 3). actions
     包含多个事件回调函数的对象
     通过执行: commit()来触发mutation的调用, 间接更新state
-    谁来触发: 组件中: $store.dispatch('action名称')  // 'zzz'
+    谁来触发: 组件中: $store.dispatch('action名称', data1)  // 'zzz'
     可以包含异步代码(定时器, ajax)
     const actions = {
       zzz ({commit, state}, data1) {
@@ -31,7 +31,7 @@
     }
 
 ## 4). getters
-    包含多个计算属性(get)的对象
+    包含多个计算属性(getter)的对象
     谁来读取: 组件中: $store.getters.xxx
     const getters = {
       mmm (state) {
@@ -45,7 +45,7 @@
     是将一复杂应用的vuex代码进行多模块拆分的第2种方式
 
 ## 6). store
-    vuex的核心管理对象
+    vuex的核心管理对象, 是组件与vuex通信的中间人
     读取数据的属性
         state: 包含最新状态数据的对象
         getters: 包含getter计算属性的对象

@@ -21,7 +21,7 @@
             <!-- 在些显示当前路由组件 -->
             <!-- 当前: 与请求的路径匹配的路由 -->
             <keep-alive exclude="About">  <!-- 对指定的路由组件不做缓存处理 -->
-              <router-view></router-view>
+              <router-view msg='abc'></router-view> <!-- 内部会将接收的属性原样传递给管理的路由组件对象 -->
             </keep-alive>
             
           </div>
