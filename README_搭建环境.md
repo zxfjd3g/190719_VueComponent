@@ -211,3 +211,7 @@
               "style": true
           }]
         ]
+
+## 9. 解决history模式路由请求404的问题
+    devServer: historyApiFallback: true, // 任意的 404 响应都被替代为 index.html
+    output: publicPath: '/', // 引入打包的文件时路径以/开头
