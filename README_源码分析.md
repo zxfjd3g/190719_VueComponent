@@ -1,35 +1,35 @@
 ## 1. 准备
-	1.[].slice.call(lis): 将伪数组转换为真数组
-	2.node.nodeType: 得到节点类型
-	3.Object.defineProperty(obj, propertyName, {}): 给对象添加/修改属性(指定描述符)
-		configurable: true/false  是否可以重新define
-		enumerable: true/false 是否可以枚举(for..in / keys())
-		value: 指定初始值
-		writable: true/false value是否可以修改存取(访问)描述符
-		get: 函数, 用来得到当前属性值
-		set: 函数, 用来监视当前属性值的变化
-  	4.Object.keys(obj): 得到对象自身可枚举的属性名的数组
-  	5.DocumentFragment: 文档碎片(高效批量更新多个节点)
-  	6.obj.hasOwnProperty(prop): 判断prop是否是obj自身的属性
+		1.[].slice.call(lis): 将伪数组转换为真数组
+		2.node.nodeType: 得到节点类型
+		3.Object.defineProperty(obj, propertyName, {}): 给对象添加/修改属性(指定描述符)
+				configurable: true/false  是否可以重新define
+				enumerable: true/false 是否可以枚举(for..in / keys())
+				value: 指定初始值
+				writable: true/false value是否可以修改存取(访问)描述符
+				get: 函数, 用来得到当前属性值
+				set: 函数, 用来监视当前属性值的变化
+		4.Object.keys(obj): 得到对象自身可枚举的属性名的数组
+		5.DocumentFragment: 文档碎片(高效批量更新多个节点)
+		6.obj.hasOwnProperty(prop): 判断prop是否是obj自身的属性
 
 ## 2. 数据代理(MVVM.js)
-	1.通过一个对象代理对另一个对象中属性的操作(读/写)
+		1.通过一个对象代理对另一个对象中属性的操作(读/写)
   	2.通过vm对象来代理data对象中所有属性的操作
   	3.好处: 更方便的操作data中的数据
   	4.基本实现流程
-    	1). 通过Object.defineProperty()给vm添加与data对象的属性对应的属性描述符
-    	2). 所有添加的属性都包含getter/setter
-    	3). 在getter/setter内部去操作data中对应的属性数据
+				1). 通过Object.defineProperty()给vm添加与data对象的属性对应的属性描述符
+				2). 所有添加的属性都包含getter/setter
+				3). 在getter/setter内部去操作data中对应的属性数据
     
 ## 3. 模板解析(compile.js)
   	1.模板解析的关键对象: compile对象
   	2.模板解析的基本流程:
-    	1). 将el的所有子节点取出, 添加到一个新建的文档fragment对象中
-    	2). 对fragment中的所有层次子节点递归进行编译解析处理
-        	* 对表达式文本节点进行解析
-        	* 对元素节点的指令属性进行解析
-            	* 事件指令解析
-            	* 一般指令解析
+				1). 将el的所有子节点取出, 添加到一个新建的文档fragment对象中
+				2). 对fragment中的所有层次子节点递归进行编译解析处理
+						* 对表达式文本节点进行解析
+						* 对元素节点的指令属性进行解析
+								* 事件指令解析
+								* 一般指令解析
       	3). 将解析后的fragment添加到el中显示
     3.解析插值语法节点: textNode.textContent = value
       	1). 根据正则对象得到匹配出的表达式字符串: 子匹配/RegExp.$1
