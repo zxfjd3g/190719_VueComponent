@@ -7,11 +7,8 @@ Observer.prototype = {
     walk: function(data) {
         var me = this;
         Object.keys(data).forEach(function(key) {
-            me.convert(key, data[key]);
+            me.defineReactive(data, key, data[key])
         });
-    },
-    convert: function(key, val) {
-        this.defineReactive(this.data, key, val);
     },
 
     defineReactive: function(data, key, val) {
