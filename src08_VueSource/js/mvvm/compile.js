@@ -62,22 +62,28 @@ Compile.prototype = {
     },
 
     compile: function(node) {
+        // 得到当前元素的所有属性节点
         var nodeAttrs = node.attributes,
             me = this;
-
+        // 遍历属性节点
         [].slice.call(nodeAttrs).forEach(function(attr) {
+            // 得到属性名: v-on:click
             var attrName = attr.name;
+            // 如果是指令属性
             if (me.isDirective(attrName)) {
+                // 得到属性值(表达式)
                 var exp = attr.value;
+                // 从属性名中取出指令名
                 var dir = attrName.substring(2);
-                // 事件指令
+                // 如果是事件指令
                 if (me.isEventDirective(dir)) {
+                    // 编译处理这个事件指令
                     compileUtil.eventHandler(node, me.$vm, exp, dir);
-                    // 普通指令
+                // 普通指令
                 } else {
                     compileUtil[dir] && compileUtil[dir](node, me.$vm, exp);
                 }
-
+                // 移除指令属性
                 node.removeAttribute(attrName);
             }
         });
@@ -157,11 +163,13 @@ var compileUtil = {
         });
     },
 
-    // 事件处理
+    // 事件指令处理
     eventHandler: function(node, vm, exp, dir) {
+        // 根据指令名得到事件名/类型
         var eventType = dir.split(':')[1],
+        // 根据表达式从methods中取出对应的事件回调函数
             fn = vm.$options.methods && vm.$options.methods[exp];
-
+        // 给当前节点绑定指定事件名和回调函数的DOM事件监听  回调函数指定this为vm
         if (eventType && fn) {
             node.addEventListener(eventType, fn.bind(vm), false);
         }
