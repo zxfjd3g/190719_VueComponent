@@ -81,6 +81,7 @@ Compile.prototype = {
                     compileUtil.eventHandler(node, me.$vm, exp, dir);
                 // 普通指令
                 } else {
+                    // 编译处理一般指令
                     compileUtil[dir] && compileUtil[dir](node, me.$vm, exp);
                 }
                 // 移除指令属性
@@ -215,12 +216,10 @@ var updater = {
 
     /* 更新元素节点的className属性 */
     classUpdater: function(node, value, oldValue) {
+        // 得到静态类名
         var className = node.className;
-        className = className.replace(oldValue, '').replace(/\s$/, '');
-
-        var space = className && String(value) ? ' ' : '';
-
-        node.className = className + space + value;
+        // 指定className
+        node.className = className ? className + ' ' + value : value
     },
 
     /* 更新元素节点的value属性 */

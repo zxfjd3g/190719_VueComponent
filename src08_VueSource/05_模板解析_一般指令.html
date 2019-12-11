@@ -3,8 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>05_模板解析_一般指令</title>
+  <style>
+    .classA {
+      color: red;
+    }
+    .classB {
+      font-size: 30px;
+    }
+  </style>
 </head>
 <body>
-
+    <div id="test">
+      <p v-text="content"></p>  <!-- p.textContent = value -->
+      <p v-html="content"></p> <!-- p.innerHTML = value -->
+      <p class="classB" v-class="myClass">xxxxxxx</p> <!-- p.className = 'classB classA' -->
+    </div>
+  
+    <script src="./js/mvvm/compile.js"></script>
+    <script src="./js/mvvm/mvvm.js"></script>
+    <script src="./js/mvvm/observer.js"></script>
+    <script src="./js/mvvm/watcher.js"></script>
+    <script>
+      new MVVM({
+        el: '#test',
+        data: {
+          content: '<a href="http://www.atguigu.com">去学习</a>',
+          myClass: 'classA'
+        },
+      })
+    </script>
 </body>
 </html>
